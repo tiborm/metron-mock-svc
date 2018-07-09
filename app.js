@@ -2,7 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
+var router = require('./routes');
 
 var app = express();
 
@@ -10,7 +10,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api/v1/pcap/pcapqueryfilterasync', indexRouter);
+app.use('/api/v1', router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
