@@ -16,8 +16,10 @@ pcapRouter.post('/submit', function(req, res, next) {
 });
 
 pcapRouter.get('/status', function (req, res, next) {
-  // res.status(200).send("COMPLETE");
-  res.status(200).send("Finished");
+  res.status(200).send(JSON.stringify({
+    status: "Finished",
+    totalPages: 34
+  }));
 });
 
 
