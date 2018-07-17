@@ -15,11 +15,25 @@ pcapRouter.post('/submit', function(req, res, next) {
   );
 });
 
+
+let statusRequestsCount = 0;
+
 pcapRouter.get('/status', function (req, res, next) {
-  res.status(200).send(JSON.stringify({
-    status: "Finished",
-    totalPages: 34
-  }));
+  if (statusRequestsCount < 3) {
+    statusRequestsCount++;
+    res.status(200).send(JSON.stringify({
+      status: "inProgress",
+      progressPercentage: 17 * statusRequestsCount,
+      totalPages: 0,
+    }));
+  } else {
+    statusRequestsCount = 0;
+    res.status(200).send(JSON.stringify({
+      status: "Finished",
+      progressPercentage: 100,
+      totalPages: 34
+    }));
+  }
 });
 
 
