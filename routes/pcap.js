@@ -1,7 +1,6 @@
 const fs = require('fs');
 const uuid = require('uuid/v1');
 
-const express = require('express');
 const pcapRouter = require('express').Router();
 
 const pdml = fs.readFileSync('./mock-data/pdml.json', 'utf-8');
