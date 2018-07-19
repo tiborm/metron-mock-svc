@@ -13,7 +13,7 @@ pcapRouter.post('/fixed', function(req, res, next) {
       jobStatus: "RUNNING",
       description: "map: 0.0%, reduce: 0.0%",
       percentComplete: 0,
-      size: 0
+      totalPages: 0
     })
   );
 });
@@ -29,8 +29,8 @@ pcapRouter.get('/:jobId', function (req, res, next) {
         "jobId": req.params.jobId,
         "jobStatus": "RUNNING",
         "description": "map: 20.0%, reduce: 0.0%",
-        "percentComplete": 10,
-        "size": 0
+        "percentComplete": 17 * statusRequestsCount,
+        "totalPages": 0
       })
     );
   } else {
@@ -38,10 +38,10 @@ pcapRouter.get('/:jobId', function (req, res, next) {
     res.status(200).send(
       JSON.stringify({
         "jobId": req.params.jobId,
-        "jobStatus": "RUNNING",
+        "jobStatus": "SUCCEEDED",
         "description": "map: 20.0%, reduce: 0.0%",
-        "percentComplete": 10,
-        "size": 0
+        "percentComplete": 100,
+        "totalPages": 8
       })
     );
   }

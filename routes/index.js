@@ -9,7 +9,7 @@ router.get('/user', function(req, res, next) {
   res.status(200).send("user");
 });
 
-router.use('/pcap', pcapRouter);
 router.use('/pcap/raw', pcapDownload);
+router.use('/pcap', pcapRouter);
 
 module.exports = router;
