@@ -6,10 +6,14 @@ const pcapRouter = require('express').Router();
 const pdml = fs.readFileSync('./mock-data/pdml.json', 'utf-8');
 
 
-pcapRouter.post('/submit', function(req, res, next) {
+pcapRouter.post('/fixed', function(req, res, next) {
   res.status(200).send(
     JSON.stringify({
-      id: uuid()
+      jobId: uuid(),
+      jobStatus: "RUNNING",
+      description: "map: 0.0%, reduce: 0.0%",
+      percentComplete: 0,
+      size: 0
     })
   );
 });
@@ -17,30 +21,38 @@ pcapRouter.post('/submit', function(req, res, next) {
 
 let statusRequestsCount = 0;
 
-pcapRouter.get('/status', function (req, res, next) {
+pcapRouter.get('/:jobId', function (req, res, next) {
   if (statusRequestsCount < 3) {
     statusRequestsCount++;
-    res.status(200).send(JSON.stringify({
-      status: "inProgress",
-      progressPercentage: 17 * statusRequestsCount,
-      totalPages: 0,
-    }));
+    res.status(200).send(
+      JSON.stringify({
+        "jobId": req.params.jobId,
+        "jobStatus": "RUNNING",
+        "description": "map: 20.0%, reduce: 0.0%",
+        "percentComplete": 10,
+        "size": 0
+      })
+    );
   } else {
     statusRequestsCount = 0;
-    res.status(200).send(JSON.stringify({
-      status: "Finished",
-      progressPercentage: 100,
-      totalPages: 34
-    }));
+    res.status(200).send(
+      JSON.stringify({
+        "jobId": req.params.jobId,
+        "jobStatus": "RUNNING",
+        "description": "map: 20.0%, reduce: 0.0%",
+        "percentComplete": 10,
+        "size": 0
+      })
+    );
   }
 });
 
 
-pcapRouter.get('/resultJson', function (req, res, next) {
+pcapRouter.get('/output/:jobId/:pageId', function (req, res, next) {
   res.status(200).send(pdml);
 });
 
-pcapRouter.get('/download', function (req, res, next) {
+pcapRouter.get('/raw/:jobId/:pageId', function (req, res, next) {
   res.sendFile(process.cwd() + '/mock-data/dummy.pcap');
 });
 
