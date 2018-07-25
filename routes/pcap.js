@@ -18,7 +18,6 @@ pcapRouter.post('/fixed', function(req, res, next) {
   );
 });
 
-
 let statusRequestsCount = 0;
 
 pcapRouter.get('/:jobId', function (req, res, next) {
@@ -38,7 +37,7 @@ pcapRouter.get('/:jobId', function (req, res, next) {
     res.status(200).send(
       JSON.stringify({
         "jobId": req.params.jobId,
-        "jobStatus": "SUCCEEDED",
+        "jobStatus": "FAILED",
         "description": "map: 20.0%, reduce: 0.0%",
         "percentComplete": 100,
         "totalPages": 8
@@ -48,11 +47,11 @@ pcapRouter.get('/:jobId', function (req, res, next) {
 });
 
 
-pcapRouter.get('/output/:jobId/:pageId', function (req, res, next) {
+pcapRouter.get('/:jobId/pdml', function (req, res, next) {
   res.status(200).send(pdml);
 });
 
-pcapRouter.get('/raw/:jobId/:pageId', function (req, res, next) {
+pcapRouter.get('/:jobId/raw', function (req, res, next) {
   res.sendFile(process.cwd() + '/mock-data/dummy.pcap');
 });
 
