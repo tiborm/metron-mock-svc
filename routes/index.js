@@ -14,4 +14,7 @@ router.use('/pcap', pcapRouter);
 const parserRouter = require('./parser');
 router.use('/sensor/parser', parserRouter);
 
+const stormRouter = require('./storm');
+router.use('/storm', stormRouter);
+
 module.exports = router;
