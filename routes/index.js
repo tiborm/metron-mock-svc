@@ -1,15 +1,17 @@
 const fs = require('fs');
 const router = require('express').Router();
 
-const pcapRouter = require('./pcap');
-const pcapDownload = require('./download');
-
 // TODO mock login
 router.get('/user', function(req, res, next) {
   res.status(200).send("user");
 });
 
+const pcapRouter = require('./pcap');
+const pcapDownload = require('./download');
 router.use('/pcap/raw', pcapDownload);
 router.use('/pcap', pcapRouter);
+
+const parserRouter = require('./parser');
+router.use('/sensor/parser', parserRouter);
 
 module.exports = router;
