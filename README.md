@@ -1,11 +1,12 @@
-# PCAP mock svc
+# Metron mock svc
+The only purpose of this express.js based small service is to mock out metron-rest service and help to speed up UI development.
 
 ## Setup and run
 1. git clone ...
 2. npm install
 3. npm start (or DEBUG=* npm start if you like to get log messages)
 4. Paste the following setup to proxy.conf.js in your metron-alerts folder: 
-
+```
 {
   "/api/v1/pcap": {
     "target": "http://localhost:3000",
@@ -20,5 +21,5 @@
     "secure": false
   }
 }
-
+```
 5. Restart your metron-alert UI with ./scripts/start-dev.sh
