@@ -1,5 +1,6 @@
 {
   "websphere": {
+    "group": "The Most Happiest Group",
     "parserClassName": "org.apache.metron.parsers.websphere.GrokWebSphereParser",
     "filterClassName": null,
     "sensorTopic": "websphere",
@@ -32,6 +33,7 @@
     "rawMessageStrategyConfig": {}
   },
   "syslog5424": {
+    "group": "The Most Happiest Group", 
     "parserClassName": "org.apache.metron.parsers.syslog.Syslog5424Parser",
     "filterClassName": null,
     "sensorTopic": "syslog5424",
@@ -61,6 +63,7 @@
     "rawMessageStrategyConfig": {}
   },
   "jsonMap": {
+    "group": "A Nice Group",
     "parserClassName": "org.apache.metron.parsers.json.JSONMapParser",
     "filterClassName": null,
     "sensorTopic": "jsonMap",
@@ -88,6 +91,7 @@
     "rawMessageStrategyConfig": {}
   },
   "jsonMapQuery": {
+    "group": "A Nice Group",
     "parserClassName": "org.apache.metron.parsers.json.JSONMapParser",
     "filterClassName": null,
     "sensorTopic": "jsonMapQuery",
