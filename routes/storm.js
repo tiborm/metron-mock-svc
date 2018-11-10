@@ -9,4 +9,12 @@ stormRouter.get('/', function(req, res, next) {
   res.status(200).send(stormConfig);
 });
 
+stormRouter.get('/parser/start/:groupName', function(req, res, next) {
+  res.status(200).send();
+});
+
+stormRouter.get('/parser/stop/:groupName', function(req, res, next) {
+  res.status(200).send();
+});
+
 module.exports = stormRouter;
