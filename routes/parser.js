@@ -24,6 +24,7 @@ parserRouter.get('/group/:groupId', function(req, res, next) {
 parserRouter.post('/group/:groupId', function(req, res, next) {
   const postedItem = req.body;
   const editedItem = parserGroups.find(group => group.name === req.params.groupId);
+
   if (editedItem) {
     editedItem.name = postedItem.name;
     editedItem.description = postedItem.description;
@@ -35,6 +36,16 @@ parserRouter.post('/group/:groupId', function(req, res, next) {
     JSON.stringify(
       parserGroups.find(group => group.name === req.params.groupId)
     )
+  );
+});
+// curl --request DELETE "http://localhost:3000/api/v1/sensor/parser/group/ANiceGroup"
+parserRouter.delete('/group/:groupId', function(req, res, next) {
+  parserGroups.splice(
+    parserGroups.indexOf(parserGroups.find(group => group.name === req.params.groupId))
+    , 1)
+    
+  res.status(200).send(
+    JSON.stringify({ name: req.params.groupId, operation: 'delete' })
   );
 });
 
