@@ -10,12 +10,39 @@ parserRouter.get('/config', function(req, res, next) {
 // curl "http://localhost:3000/api/v1/sensor/parser/config/websphere"
 parserRouter.get('/config/:sensorName', function(req, res, next) {
   const item = parserConfig[req.params.sensorName];
-  item ? res.status(200).send(JSON.stringify(item)) : res.status(404).send();
+  res.status(200).send({
+    "parserClassName": "org.apache.metron.parsers.bro.BasicBroParser",
+    "filterClassName": null,
+    "sensorTopic": "bro",
+    "outputTopic": null,
+    "errorTopic": null,
+    "writerClassName": null,
+    "errorWriterClassName": null,
+    "readMetadata": false,
+    "mergeMetadata": false,
+    "numWorkers": null,
+    "numAckers": null,
+    "spoutParallelism": 1,
+    "spoutNumTasks": 1,
+    "parserParallelism": 1,
+    "parserNumTasks": 1,
+    "errorWriterParallelism": 1,
+    "errorWriterNumTasks": 1,
+    "spoutConfig": {},
+    "securityProtocol": null,
+    "stormConfig": {},
+    "parserConfig": {},
+    "fieldTransformations": [],
+    "cacheConfig": {},
+    "rawMessageStrategy": "DEFAULT",
+    "rawMessageStrategyConfig": {}
+  });
 });
+
 // curl --header "Content-Type: application/json" --request POST --data '{"name":"ANiceGroup","description":"Just a nice group of parsers. Edited version #1"}' http://localhost:3000/api/v1/sensor/parser/config/websphere
 parserRouter.post('/config/:sensorName', function(req, res, next) {
   parserConfig[req.params.sensorName] = req.body;
-  
+
   res.status(200).send(
     JSON.stringify(parserConfig[req.params.sensorName])
   );
@@ -54,7 +81,7 @@ parserRouter.post('/group/:groupId', function(req, res, next) {
   } else {
     parserGroups.push(postedItem);
   }
-  
+
   res.status(200).send(
     JSON.stringify(
       parserGroups.find(group => group.name === req.params.groupId)
@@ -73,7 +100,7 @@ parserRouter.delete('/group/:groupId', function(req, res, next) {
     );
   } else {
     res.status(404).send();
-  }  
+  }
 });
 
 module.exports = parserRouter;

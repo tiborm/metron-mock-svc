@@ -9,11 +9,17 @@ stormRouter.get('/', function(req, res, next) {
   res.status(200).send(stormConfig);
 });
 
-stormRouter.get('/parser/start/:groupName', function(req, res, next) {
+// /api/v1/storm/bro
+stormRouter.get('/:configId', function(req, res, next) {
+  // we simply returning the result set of bro config on full dev
+  res.status(404).send();
+});
+
+stormRouter.get('/parser/start/:configId', function(req, res, next) {
   res.status(200).send();
 });
 
-stormRouter.get('/parser/stop/:groupName', function(req, res, next) {
+stormRouter.get('/parser/stop/:configId', function(req, res, next) {
   res.status(200).send();
 });
 

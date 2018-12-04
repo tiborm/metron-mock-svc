@@ -82,24 +82,6 @@
   },
   {
     "id": "pcap-2-1541415492",
-    "name": "yaf",
-    "status": "KILLED",
-    "latency": 0.0,
-    "throughput": 0.0,
-    "emitted": 0,
-    "acked": 0
-  },
-  {
-    "id": "pcap-2-1541415492",
-    "name": "TheMostHappiestGroup",
-    "status": "ACTIVE",
-    "latency": 0.0,
-    "throughput": 0.0,
-    "emitted": 0,
-    "acked": 0
-  },
-  {
-    "id": "pcap-2-1541415492",
     "name": "TheMostHappiestGroup",
     "status": "ACTIVE",
     "latency": 0.0,
