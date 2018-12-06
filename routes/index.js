@@ -6,6 +6,13 @@ router.get('/user', function(req, res, next) {
   res.status(200).send("user");
 });
 
+const alertsUiRouter = require('./alerts')
+router.use('/search', alertsUiRouter);
+
+const globalConfigRouter = require('./global')
+router.use('/global', globalConfigRouter);
+
+
 const pcapRouter = require('./pcap');
 const pcapDownload = require('./download');
 router.use('/pcap/raw', pcapDownload);
