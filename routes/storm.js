@@ -1,12 +1,18 @@
 const fs = require('fs');
+const utils = require('../utils');
+const stormConfig = require('../mock-data/storm-config.json');
 
 const stormRouter = require('express').Router();
 
-const stormConfig = fs.readFileSync('./mock-data/storm-config.json', 'utf-8');
-
-
-stormRouter.get('/', function(req, res, next) {
-  res.status(200).send(stormConfig);
+stormRouter.get('/', function(req, res,) {
+  const stormConfigUpdated = stormConfig.map((config) => {
+    return {
+      ...config,
+      throughput: utils.generateRandomThroughput(),
+      latency: utils.generateRandomLatency()
+    };
+  });
+  res.status(200).send(JSON.stringify(stormConfigUpdated));
 });
 
 // /api/v1/storm/bro
