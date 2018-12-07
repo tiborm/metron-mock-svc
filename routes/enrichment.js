@@ -1,6 +1,6 @@
 const enrichmentRouter = require("express").Router();
 
-enrichmentRouter.get("/config/:configId", function(req, res, next) {
+enrichmentRouter.get("/config/:configId", function(req, res) {
   res
     .status(200)
     .send({ // this is the response for bro

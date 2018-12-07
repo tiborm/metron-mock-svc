@@ -1,6 +1,6 @@
 const alertsUiRouter = require('express').Router();
 
-alertsUiRouter.post('/search', function (req, res, next) {
+alertsUiRouter.post('/search', function (req, res) {
   res.sendFile(process.cwd() + '/mock-data/alerts/search.json');
 });
 
