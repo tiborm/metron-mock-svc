@@ -23,10 +23,22 @@ router.use('/sensor/parser', parserRouter);
 const enrichmentRouter = require('./enrichment');
 router.use('/sensor/enrichment', enrichmentRouter);
 
+const indexingRouter = require('./indexing');
+router.use('/sensor/indexing', indexingRouter);
+
 const kafkaRouter = require('./kafka');
 router.use('/kafka', kafkaRouter);
 
 const stormRouter = require('./storm');
 router.use('/storm', stormRouter);
+
+const hdfsRouter = require('./hdfs');
+router.use('/hdfs', hdfsRouter);
+
+const grokRouter = require('./grok');
+router.use('/grok', grokRouter);
+
+const stellarRouter = require('./stellar');
+router.use('/stellar', stellarRouter);
 
 module.exports = router;

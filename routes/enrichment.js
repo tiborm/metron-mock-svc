@@ -26,4 +26,12 @@ enrichmentRouter.get("/config/:configId", function(req, res) {
     });
 });
 
+enrichmentRouter.get('/config/list/available/enrichments', function (req, res) {
+  res.send([
+    "geo",
+    "host",
+    "whois",
+  ]);
+});
+
 module.exports = enrichmentRouter;

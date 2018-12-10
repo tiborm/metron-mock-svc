@@ -33,6 +33,26 @@ parserRouter.delete('/config/:sensorName', function(req, res) {
   }
 });
 
+parserRouter.get('/config/list/available', function (req, res) {
+  res.status(200).send({
+    "Grok": "org.apache.metron.parsers.GrokParser",
+    "CEF": "org.apache.metron.parsers.cef.CEFParser",
+    "Lancope": "org.apache.metron.parsers.lancope.BasicLancopeParser",
+    "Syslog5424": "org.apache.metron.parsers.syslog.Syslog5424Parser",
+    "CSV": "org.apache.metron.parsers.csv.CSVParser",
+    "PaloAltoFirewall": "org.apache.metron.parsers.paloalto.BasicPaloAltoFirewallParser",
+    "Logstash": "org.apache.metron.parsers.logstash.BasicLogstashParser",
+    "Sourcefire": "org.apache.metron.parsers.sourcefire.BasicSourcefireParser",
+    "FireEye": "org.apache.metron.parsers.fireeye.BasicFireEyeParser",
+    "Asa": "org.apache.metron.parsers.asa.BasicAsaParser",
+    "Snort": "org.apache.metron.parsers.snort.BasicSnortParser",
+    "JSONMap": "org.apache.metron.parsers.json.JSONMapParser",
+    "Ise": "org.apache.metron.parsers.ise.BasicIseParser",
+    "GrokWebSphere": "org.apache.metron.parsers.websphere.GrokWebSphereParser",
+    "Bro": "org.apache.metron.parsers.bro.BasicBroParser"
+  });
+});
+
 // curl "http://localhost:3000/api/v1/sensor/parser/group"
 parserRouter.get('/group', function(req, res) {
   res.status(200).send(parserGroups);
