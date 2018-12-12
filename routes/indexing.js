@@ -20,4 +20,8 @@ indexingRouter.get("/config/:configId", function(req, res) {
   });
 });
 
+indexingRouter.post('/config/:configId', function (req, res) {
+  res.send(200);
+});
+
 module.exports = indexingRouter;
