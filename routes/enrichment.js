@@ -35,7 +35,7 @@ enrichmentRouter.get('/config/list/available/enrichments', function (req, res) {
 });
 
 enrichmentRouter.post('/config/:configId', function (req, res) {
-  res.send(200);
+  res.status(200).send({});
 });
 
 module.exports = enrichmentRouter;

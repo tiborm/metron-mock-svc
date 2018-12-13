@@ -21,7 +21,7 @@ indexingRouter.get("/config/:configId", function(req, res) {
 });
 
 indexingRouter.post('/config/:configId', function (req, res) {
-  res.send(200);
+  res.status(200).send({});
 });
 
 module.exports = indexingRouter;
