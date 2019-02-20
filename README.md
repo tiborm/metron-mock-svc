@@ -8,16 +8,8 @@ The only purpose of this express.js based small service is to mock out metron-re
 4. Paste the following setup to proxy.conf.js in your metron-alerts folder: 
 ```
 {
-  "/api/v1/pcap": {
-    "target": "http://localhost:3000",
-    "secure": false
-  },
   "/api/v1": {
     "target": "http://localhost:3000",
-    "secure": false
-  },
-  "/logout": {
-    "target": "http://node1:8082",
     "secure": false
   }
 }
