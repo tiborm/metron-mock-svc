@@ -41,4 +41,7 @@ router.use('/grok', grokRouter);
 const stellarRouter = require('./stellar');
 router.use('/stellar', stellarRouter);
 
+const enrichmentsRouter = require('./enrichments');
+router.use('/', enrichmentsRouter);
+
 module.exports = router;

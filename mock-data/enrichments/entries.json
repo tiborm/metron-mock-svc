@@ -1,0 +1,21 @@
+[{
+  "uuid": "123",
+  "timestamp": 123,
+  "user": "bob",
+  "value": "{\"foo\": \"1\", \"lorem\": \"2\"}"
+}, {
+  "uuid": "456",
+  "timestamp": 456,
+  "user": "simon",
+  "value": "{\"foo\": \"3\", \"lorem\": \"4\"}"
+}, {
+  "uuid": "678",
+  "timestamp": 678,
+  "user": "todd",
+  "value": "{\"foo\": \"5\", \"lorem\": \"6\"}"
+}, {
+  "uuid": "910",
+  "timestamp": 123,
+  "user": "jamey",
+  "value": "{\"foo\": \"7\", \"lorem\": \"8\"}"
+}]
