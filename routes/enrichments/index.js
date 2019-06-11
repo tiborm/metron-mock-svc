@@ -6,4 +6,12 @@ router.get('/enrichments/:id/entries', function (req, res) {
   res.status(200).send(data.filter(entry => entry.type === type));
 });
 
+router.put('/enrichments/:type/entries/:id', function (req, res) {
+  const id = req.params.id;
+  const type = req.params.type;
+  const index = data.findIndex(entry => entry.uuid === id && entry.type === type);
+  data.splice(index, 1, req.body);
+  res.status(200).send(data[index]);
+});
+
 module.exports = router;
