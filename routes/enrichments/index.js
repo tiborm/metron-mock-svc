@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const data = require('../../mock-data/enrichments/entries.json');
 
-router.get('/enrichments/:id', function (req, res) {
+router.get('/enrichments/:type/entries/:id', function (req, res) {
   const id = req.params.id;
   const entry = data.find(entry => entry.uuid === id);
   if (entry) {
